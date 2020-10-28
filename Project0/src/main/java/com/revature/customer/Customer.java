@@ -1,5 +1,6 @@
 package com.revature.customer;
 
+<<<<<<< HEAD
 /* Notes : 
  *	 Methods (7 Buttons)
  * 	 	Main Screen of Customer (exit(break) button returns to main)
@@ -23,12 +24,35 @@ package com.revature.customer;
  *  [B] Once a customer applies they get assigned a template with same properties
  */
 
+=======
+>>>>>>> 2decc429ef871847a88119630979c28e0a66aa81
 public class Customer {
 	
 	private String username; /* Encapsulation */
 	private String password;
 	
+<<<<<<< HEAD
 	private String fname;
+=======
+	private String firstName;
+	
+	/*
+	 * Only need firstName to apply for now.
+	 */
+	
+	/*
+	 * Methods (7 Buttons)
+	 * - Main Screen of Customer (exit(break) button returns to main)
+	 * 		- public static void apply() 1.1
+	 *  	- public static void login() 1.2
+	 *  	- public static void register() 1.3
+	 *  
+	 *  	- public static void deposit() 1.4
+	 *  	- public static void withdrawal() 1.5
+	 *  	- public static void transfer() 1.6
+	 *  	- public static void view() 1.7
+	 */
+>>>>>>> 2decc429ef871847a88119630979c28e0a66aa81
 	
 	public Customer() {	/* Overloading*/
 	}
@@ -58,6 +82,7 @@ public class Customer {
 		this.password = password;
 	}
 	
+<<<<<<< HEAD
 	 public String getFname() {
 		return fname;
 	}
@@ -125,6 +150,23 @@ public class Customer {
 	@Override
 	public String toString() {
 		return " username: " + username + "\n Password: " + password + "\n First: " + fname ;
+=======
+	 public static void apply() { /* */ 
+		
+	 }
+	 
+	 public static boolean login() { /* */
+			 return false;
+	 }
+	 
+	 public static boolean register() { /* */
+		 	return false;
+	 }
+
+	@Override
+	public String toString() {
+		return "Customer [username=" + username + ", password=" + password + "]";
+>>>>>>> 2decc429ef871847a88119630979c28e0a66aa81
 	}
 	
 	

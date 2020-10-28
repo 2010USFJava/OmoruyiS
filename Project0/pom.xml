@@ -7,6 +7,7 @@
   	  	<maven.compiler.source>1.8</maven.compiler.source>
   		<maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+<<<<<<< HEAD
   <dependencies>
 	  <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
 	<dependency>
@@ -15,4 +16,7 @@
 	    <version>2.13.3</version>
 	</dependency>
   </dependencies>
+=======
+
+>>>>>>> 2decc429ef871847a88119630979c28e0a66aa81
 </project>

@@ -7,6 +7,7 @@ public class Scanner {
 	public static void main(String[] args) {
 		
 		Customer user = new Customer();
+<<<<<<< HEAD
 			
 			mainMenu(user);
 			
@@ -38,3 +39,14 @@ public class Scanner {
 }
 
 	
+=======
+		
+		user.setUsername("Sandy");
+		user.getUsername();
+		
+		System.out.println(user);
+
+	}
+
+}
+>>>>>>> 2decc429ef871847a88119630979c28e0a66aa81
