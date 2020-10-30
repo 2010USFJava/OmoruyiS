@@ -8,7 +8,14 @@ if [[ -n "$bname" ]]; then
 	sleep 1
 	echo ' '
 	git checkout -b $bname
-	git add .
+	sleep 1
+	git push origin $bname
+	sleep 1
+	
+	echo ' '
+	echo Returning to main branch
+	echo ' '
+	git checkout main
 else
 	echo ' '
         echo ERROR: Provide name of the branch...
