@@ -10,17 +10,26 @@ package com.revature.bean;
  */
 public class Customer { // [A]
 	
+	//public static Apply Apply; // [ Create Type Apply in Customer]
 	private String username; // [1a-e]
 	private String password;
 	private String first;
 	private String last;
 	private double balance;
-	
+	//Apply apply;
 	
 	public Customer() { // [2a]
 		super();
+		//System.out.print(" Customer Class ");
 	}
 	
+//	public Customer(Apply apply) { // [2a]
+//		super();
+//		System.out.print(" apply ");
+//	}
+	
+	
+
 	public Customer(String username, String password, String first, String last, double balance) { // [2b]
 		super();
 		this.username = username;
@@ -30,21 +39,9 @@ public class Customer { // [A]
 		this.balance = balance;
 	}
 
-	class Register extends Customer{ // [3a]
-		
-		// Login methods
-	}
 	
-	class Login extends Customer{ // [3b]
-		
-		// Login methods
-	}
 	
-	class Apply extends Login{	// [3c]
-		
-		// Apply methods
-	}
-
+/*****************************************/
 	public String getUsername() { // [4a]
 		return username;
 	}

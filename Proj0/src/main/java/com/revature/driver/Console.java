@@ -6,7 +6,13 @@ public class Console {
 
 	public static void main(String[] args) {
 		Customer p1 = new Customer();
-		System.out.print(p1);
+		System.out.print(p1 + "\n");
+
+		
+		Menu.mainMenu();
+		
+		//Menu.customerMenu();
+		
 
 	}
 
