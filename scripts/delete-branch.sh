@@ -7,7 +7,8 @@ if [[ -n "$bname" ]]; then
 	echo Deleting branch $bname
 	sleep 1
 	echo ' '
-	git branch -D $bname
+	#git branch -D 
+	git push origin --delete $bname
 else
 	echo ' '
         echo ERROR: Provide name of the branch...
