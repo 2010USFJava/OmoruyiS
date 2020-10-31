@@ -11,82 +11,66 @@ package com.revature.bean;
 public class Customer { // [A]
 	
 	//public static Apply Apply; // [ Create Type Apply in Customer]
-	private String username; // [1a-e]
-	private String password;
-	private String first;
-	private String last;
 	private double balance;
-	//Apply apply;
+	Register register;
+	Login login;
+	Apply apply;
 	
 	public Customer() { // [2a]
 		super();
-		//System.out.print(" Customer Class ");
 	}
 	
-//	public Customer(Apply apply) { // [2a]
-//		super();
-//		System.out.print(" apply ");
-//	}
-	
-	
-
-	public Customer(String username, String password, String first, String last, double balance) { // [2b]
+	public Customer(double balance, Register register, Login login, Apply apply) {
 		super();
-		this.username = username;
-		this.password = password;
-		this.first = first;
-		this.last = last;
 		this.balance = balance;
+		this.register = register;
+		this.login = login;
+		this.apply = apply;
 	}
 
-	
-	
-/*****************************************/
-	public String getUsername() { // [4a]
-		return username;
+	public Apply getApply() {
+		return apply;
 	}
 
-	public void setUsername(String username) { // [4b]
-		this.username = username;
+	public void setApply(Apply apply) {
+		this.apply = apply;
 	}
 
-	public String getPassword() { // [4c]
-		return password;
-	}
-
-	public void setPassword(String password) { // [4d]
-		this.password = password;
-	}
-
-	public String getFirst() { // [4e]
-		return first;
-	}
-
-	public void setFirst(String first) { // [4f]
-		this.first = first;
-	}
-
-	public String getLast() { // [4g]
-		return last;
-	}
-
-	public void setLast(String last) { // [4h]
-		this.last = last;
-	}
-
-	public double getBalance() { // [4i]
+	public double getBalance() {
 		return balance;
 	}
 
-	public void setBalance(double balance) { // [4j]
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 
-	@Override
-	public String toString() { // [5]
-		return "Customer [username=" + username + ", password=" + password + ", first=" + first + ", last=" + last
-				+ ", balance=" + balance + "]";
+	public Register getRegister() {
+		return register;
 	}
+
+	public void setRegister(Register register) {
+		this.register = register;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [balance=" + balance + ", register=" + register + ", login=" + login + ", apply=" + apply
+				+ "]";
+	}
+
+	
+	
+	
+
+	
 	
 	
 	

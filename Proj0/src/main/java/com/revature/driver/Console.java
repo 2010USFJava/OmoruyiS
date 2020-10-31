@@ -11,8 +11,6 @@ public class Console {
 		
 		Menu.mainMenu();
 		
-		//Menu.customerMenu();
-		
 
 	}
 
