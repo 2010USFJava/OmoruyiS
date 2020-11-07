@@ -1,5 +1,7 @@
 package com.revature.bean;
 
+import com.revature.io.IO;
+
 /*
  * [A] Customer Class
  * [1] Private Fields
@@ -8,16 +10,20 @@ package com.revature.bean;
  * [4] Get & Setter Method
  * [5] toString Method for Fields
  */
-public class Customer { // [A]
+public class Customer{ // [A]
 	
-	//public static Apply Apply; // [ Create Type Apply in Customer]
-	private double balance;
+	private double balance; //Might need an accounts class for backend processing
 	Register register;
 	Login login;
 	Apply apply;
 	
 	public Customer() { // [2a]
 		super();
+	}
+	
+	public Customer(Register register) {
+		super();
+		this.register = register;
 	}
 	
 	public Customer(double balance, Register register, Login login, Apply apply) {
@@ -62,8 +68,11 @@ public class Customer { // [A]
 
 	@Override
 	public String toString() {
-		return "Customer [balance=" + balance + ", register=" + register + ", login=" + login + ", apply=" + apply
-				+ "]";
+		return "Customer : \n"
+				+ "[Register: " +  register + "]\n"
+				+ "[Login: " 	+  login    + "]\n"
+				+ "[Apply: " 	+  apply    + "]\n" 
+				+ "[Balance: "  +  balance  + "]\n";
 	}
 
 	

@@ -1,6 +1,17 @@
 package com.revature.bean;
 
-public class Register extends Customer {
+import java.io.Serializable;
+
+import com.revature.io.IO;
+import com.revature.io.IOWithCollections;
+
+public class Register extends Customer implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2369493236795370396L;
+	
 	private String username; 
 	private String password;
 	private String first;
@@ -8,7 +19,8 @@ public class Register extends Customer {
 	
 	public Register() {
 		super();
-		System.out.print( " register \n");
+		IO.registerList.add(this);
+		IOWithCollections.writeInfoFile(IO.registerList);
 	}
 
 	public Register(String username, String password, String first, String last) {
@@ -17,6 +29,8 @@ public class Register extends Customer {
 		this.password = password;
 		this.first = first;
 		this.last = last;
+		IO.registerList.add(this);
+		IOWithCollections.writeInfoFile(IO.registerList);
 	}
 	
 	
@@ -54,8 +68,12 @@ public class Register extends Customer {
 
 	@Override
 	public String toString() {
-		return "Register [username=" + username + ", password=" + password + ", first=" + first + ", last=" + last
-				+ "]";
+		return " Registered: ["
+				+ " user: " + username + "  |" 
+				+ " pass: " + password + "  |" 
+				+ " firt: " + first + "  |" 
+				+ " last: " + last  
+				+ "]\n";
 	}
 
 	

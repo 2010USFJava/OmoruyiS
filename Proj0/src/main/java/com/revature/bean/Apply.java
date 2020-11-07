@@ -7,29 +7,27 @@ package com.revature.bean;
 
 public class Apply extends Customer{
 	private int qty;
-	private int num;
+	private int numOfAccounts;
+	private int accountNum;
 	
 		public Apply() {
 			super();
 			System.out.print(" apply \n");
 		}
 
-		public Apply(int qty, int num) {
+		
+
+		public Apply(int qty, int numOfAccounts, int accountNum) {
 			super();
 			this.qty = qty;
-			this.num = num;
+			this.numOfAccounts = numOfAccounts;
+			this.accountNum = accountNum;
 		}
 
-		public void applyMenu() {
-			System.out.println("Apply Menu");
-			System.out.println("_________________________________");
-			System.out.println("complete");
-		}
-		
-		
+
 		@Override
 		public String toString() {
-			return "Accounts [qty=" + qty + ", num=" + num + "]";
+			return "Apply [qty=" + qty + ", numOfAccounts=" + numOfAccounts + ", accountNum=" + accountNum + "]";
 		}	
 		
 		
