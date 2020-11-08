@@ -3,8 +3,8 @@ package com.revature.io;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.revature.bean.Customer;
-import com.revature.bean.Register;
+import com.revature.accounts.Customer;
+import com.revature.accounts.Register;
 
 public class IO {
 

@@ -1,5 +1,6 @@
 package com.revature.io;
 
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.revature.bean.Register;
+import com.revature.accounts.Register;
 
 public class IOWithCollections {
 	//private static final String customerFile = "customer.txt"; 

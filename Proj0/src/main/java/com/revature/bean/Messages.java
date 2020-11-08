@@ -2,19 +2,27 @@ package com.revature.bean;
 
 public class Messages {
 	
-
 	public static void quitMsg() {
-		System.out.println("\n\tQuiting...\n");
 		
+		for (int i = 0; i < 50; ++i) System.out.println();
+		System.out.println("\n\tQuiting...\n");
 	}
+	
+	public static void loggingOutMsg() {
+		System.out.println("\n\tLogging out of Account...\n");
+	}
+	
 
 	public static void errMsg() {
-		System.out.println("\n***Error: Invalid Input***** \n");
 		
+		for (int i = 0; i < 50; ++i) System.out.println();
+		System.out.println("\n***Error: Invalid Input***** \n");
 	}
 
 	public static void processMsg() {
+		
 		System.out.println("\n\tProcessing...\n\n");
+		
 		try
 		{
 			Thread.sleep(300);
@@ -30,11 +38,6 @@ public class Messages {
 		catch(InterruptedException ex)
 		{
 		    Thread.currentThread().interrupt();
-		}
-		
+		    }
 	}
-	
-	
-	
-
 }
