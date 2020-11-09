@@ -45,26 +45,26 @@ public class CustomerMenu {
 	
 	public static void customerAccountMenu(String screenName, int customerTag) {
 		
-		Menu.templateMenu("CUSTOMER ACCOUNT MENU", 4);
-		
 //		if accounts equal 0
-		System.out.println("\n\tCurrently you have 0 accounts with us, " +
-				"\n\tApply Now " + screenName + " for great offers!!! \n");
+//		System.out.println("\n\tCurrently you have 0 accounts with us, " +
+//				"\n\tApply Now " + screenName + " for great offers!!! \n");
 		
+		
+		Menu.templateMenu("CUSTOMER ACCOUNT MENU", 4);
 		
 		String choice = scan.nextLine();
 		switch(choice.toLowerCase()) {
 		case "a":
-			Apply.applytMenu();
+			Apply.applytMenu(customerTag);
 			break;
 		case "d":
-			Deposit.depositMenu(); 
+			Deposit.depositMenu(customerTag); 
 			break;
 		case "t": 
-			Transfer.transferMenu();
+			Transfer.transferMenu(customerTag);
 			break;
 		case "w":			
-			Withdrawal.withdrawalMenu();
+			Withdrawal.withdrawalMenu(customerTag);
 			break;
 		case "v": 
 			View.viewMenu(customerTag); // Layout Customer class here
@@ -218,9 +218,10 @@ public class CustomerMenu {
 		 * it matches login DOES NOT match DENY and ask the login user to
 		 * try again. 
 		 */
-			
-		System.out.println("\n\tIncorrect Login Attempt!!!\n"); //[4]
-		Menu.tryAgainMenu(2);
+		else {	
+			System.out.println("\n\tIncorrect Login Attempt!!!\n"); //[4]
+			Menu.tryAgainMenu(2);
+		}
 	}
 	
 

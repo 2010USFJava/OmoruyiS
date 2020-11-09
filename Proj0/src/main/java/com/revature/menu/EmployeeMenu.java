@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.revature.bean.Messages;
 import com.revature.io.IO;
 import com.revature.io.InitializeData;
+import com.revature.validate.Validate;
 import com.revature.workload.AdminWorkload;
 import com.revature.workload.EmployeeWorkload;
 
@@ -97,7 +98,7 @@ public class EmployeeMenu {
 		String pass = scan.nextLine();
 		
 		System.out.println("KEY: ");
-		int key = scan.nextInt();
+		int key =  Validate.validateIntegerInput();
 		
 		int size = IO.registerList.size(); 
 		

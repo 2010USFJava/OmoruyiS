@@ -12,6 +12,13 @@ public class Messages {
 		System.out.println("\n\tLogging out of Account...\n");
 	}
 	
+public static void exitMsg() {
+		
+		for (int i = 0; i < 50; ++i) System.out.println();
+		System.out.println("\n\tExiting...\n");
+	}
+	
+	
 
 	public static void errMsg() {
 		

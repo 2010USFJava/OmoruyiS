@@ -8,14 +8,13 @@ package com.revature.menu;
  * [B] Template : Populates the content for core menus
  * [C] Try Again Menu : Called when user needs to repeat a task 
  * [D] Debug Menu : Used to test code before implementation (hidden during production)
+ * [E] Exit Menu :
  * 
  */
 
 import java.util.Scanner;
 
 import com.revature.bean.Messages;
-import com.revature.io.IO;
-import com.revature.io.InitializeData;
 
 public class Menu { //[A]
 	
@@ -37,13 +36,13 @@ public class Menu { //[A]
 			Messages.quitMsg();
 			mainMenu();
 			break;
-		case "d":
-			debugMenu();
-			break;
-		case "v":
-			viewRegisteredCustomerList();
-			mainMenu();
-			break;
+//		case "d":
+//			debugMenu();
+//			break;
+//		case "v":
+//			viewRegisteredCustomerList();
+//			mainMenu();
+//			break;
 		default:
 			Messages.errMsg();
 			mainMenu();
@@ -97,14 +96,13 @@ public class Menu { //[A]
 			
 			if( ("ADMIN WORKLOAD MENU").equals(typeMenu) ) {
 				System.out.println("\n\t[v]iew employee info*");
-			}
-			
+			}		
 		}
 		else if(version == 10) { // TRY AGAIN options(s)
 			System.out.println("\n\t[y]es");
 			System.out.println("\t[n]o");
 		}
-		
+	
 		System.out.println("\n\t[q]uit");
 		System.out.println(drawLine);
 	}
@@ -140,23 +138,27 @@ public static void tryAgainMenu(int userType) { //[C]
 			break;
 		}
 	}
-	
-	public static void debugMenu() { //[D]
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		System.out.println("Debug Window");
-	}
-	
-	public static void viewRegisteredCustomerList() {
-		
-		InitializeData.initializeRegistrationDatabase();
-		
-		int size = IO.registerList.size();
-		
-		System.out.println(" List of Registered Customers\n");
-		System.out.println(" " + IO.registerList);
-		System.out.println("\n Total Registered Customers: " + size + "\n");
-		
-	}
-	
+
+
+/* Code Below For Debugging */
+
+//	public static void viewRegisteredCustomerList() {
+//		
+//		InitializeData.initializeRegistrationDatabase();
+//		
+//		int size = IO.registerList.size();
+//		
+//		System.out.println(" List of Registered Customers\n");
+//		System.out.println(" " + IO.registerList);
+//		System.out.println("\n Total Registered Customers: " + size + "\n");
+//		
+//	}
+//	
+//	public static void debugMenu() { //[D]
+//		System.out.println("\n\n\n\n\n\n\n\n");
+//		System.out.println(" Debug Window\n");
+//		
+//	
+//	}
 
 }
