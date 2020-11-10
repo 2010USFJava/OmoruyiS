@@ -7,7 +7,7 @@ package com.revature.accounts;
 public class Account extends Customer{
 	private int qty;
 	private long accountNumber;
-	private String typeOfAccount;
+	private int typeOfAccount;
 	
 	public Account() {
 		super();
@@ -15,10 +15,40 @@ public class Account extends Customer{
 	}
 
 
-	public Account(int qty, long accountNumber, String typeOfAccount) {
+	public Account(int qty, long accountNumber, int typeOfAccount) {
 		super();
 		this.qty = qty;
 		this.accountNumber = accountNumber;
+		this.typeOfAccount = typeOfAccount;
+	}
+
+
+	public int getQty() {
+		return qty;
+	}
+
+
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+
+
+	public long getAccountNumber() {
+		return accountNumber;
+	}
+
+
+	public void setAccountNumber(long accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+
+	public int getTypeOfAccount() {
+		return typeOfAccount;
+	}
+
+
+	public void setTypeOfAccount(int typeOfAccount) {
 		this.typeOfAccount = typeOfAccount;
 	}
 

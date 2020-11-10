@@ -22,6 +22,8 @@ public class Menu { //[A]
 	
 	public static void mainMenu() {
 		
+		System.out.println("\n Welcome to Casino Royal Banking");
+		
 		templateMenu("MAIN MENU", 1);
 		
 		String choice = scan.nextLine();
@@ -63,8 +65,8 @@ public class Menu { //[A]
 			System.out.println("\n\t[c]ustomer");
 			System.out.println("\t[e]mployee");
 			
-			System.out.println("\n\t[v]iew registered customer list");
-			System.out.println("\n\t[d]ebug");
+//			System.out.println("\n\t[v]iew registered customer list");
+//			System.out.println("\n\t[d]ebug");
 		}
 		else if(version == 2) { // CUSTOMER option(s)
 			System.out.println("\n\t[r]egister");
@@ -88,14 +90,17 @@ public class Menu { //[A]
 			System.out.println("\t[3] Primary 'Vanilla' Account");
 			System.out.println("\t[4] My Money Is 'Your' Money Joint Account");
 			System.out.println("\t[5] My Money is 'My' Money Primary Account");
+			
+			System.out.println("\n\t[e]xit");
 		}
 		else if(version == 6) { // APPLY option(s)
 			System.out.println("\n\t[a]prove accounts");
 			System.out.println("\t[d]eny accounts");
 			System.out.println("\t[s]earch customer info");
+			System.out.println("\t[v]iew customer info");
 			
 			if( ("ADMIN WORKLOAD MENU").equals(typeMenu) ) {
-				System.out.println("\n\t[v]iew employee info*");
+				System.out.println("\n\t[r]eview employee info*");
 			}		
 		}
 		else if(version == 10) { // TRY AGAIN options(s)

@@ -16,13 +16,16 @@ public class AdminWorkload {
 		String choice = scan.nextLine();
 		switch(choice.toLowerCase()) {
 		case "a":
-			
+			EmployeeWorkload.viewCustomerList();
 			break;
 		case "d":
-			
+			EmployeeWorkload.viewCustomerList();
 			break;	
 		case "s":
-			
+			EmployeeWorkload.viewCustomerList();
+			break;
+		case "v":
+			EmployeeWorkload.viewCustomerList();
 			break;
 		case "q":
 			Messages.quitMsg();

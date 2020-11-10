@@ -2,6 +2,7 @@ package com.revature.actions;
 
 import java.util.Scanner;
 
+import com.revature.accounts.Account;
 import com.revature.bean.Messages;
 import com.revature.io.IO;
 import com.revature.menu.CustomerMenu;
@@ -56,8 +57,10 @@ static Scanner scan = new Scanner(System.in);
 	
 	public static void primaryAccount(int customerTag, int special) {
 		
+		
 		String user = IO.registerList.get(customerTag).getUsername();
 		String screenName  = user.substring(0,1).toUpperCase() + user.substring(1).toLowerCase();
+		
 		
 		String drawLine= "_________________________________";
 		int minimum = 800;
@@ -84,18 +87,23 @@ static Scanner scan = new Scanner(System.in);
 		
 		if(amount < (minimum*qty) && amount >= 0){
 			// Send to DENY Pill
-			System.out.println("\n " + screenName + " applied for " + qty + "accounts and deposited "
+			System.out.println("\n " + screenName + " applied for (" + qty + ") accounts and deposited $"
 					+ amount + "\n");
 			
-			// Write to approved list
-			//EmployeeWorkload.denyList(customerTag); 
+			//EmployeeWorkload.denyList(customerTag);
+			System.out.println(" \t" + screenName + ", some or all accounts might be DENIED");
+			System.out.println(" \tMinimum Needed: ($" + (double)minimum*qty + ")");
+			IO.registerList.get(customerTag).setBalance(amount);
+			IO.registerList.get(customerTag).setAccount(new Account(qty, 0, special));
 			
 		}
 		else if(amount >= (minimum*qty)){
 			// Send to APPROVED Pill
-			System.out.println("\n " + screenName + " applied for " + qty + "accounts and deposited "
+			System.out.println("\n " + screenName + " applied for (" + qty + ") accounts and deposited $"
 					+ amount + "\n");
 			
+			IO.registerList.get(customerTag).setBalance(amount);
+			IO.registerList.get(customerTag).setAccount(new Account(qty, 0, special));
 			// Write to approved list
 			//EmployeeWorkload.approveList(customerTag);
 		}
@@ -108,14 +116,21 @@ static Scanner scan = new Scanner(System.in);
 		
 		System.out.print("\n We are processing your application.");
 		System.out.print(" Check back in 48hrs.\n\n\n");
+		
+		
 		CustomerMenu.customerAccountMenu(screenName, customerTag);
+		
 		
 	}
 	
+
+
+
 	public static void jointAccount(int customerTag, int special) {
 		
 		String user = IO.registerList.get(customerTag).getUsername();
 		String screenName  = user.substring(0,1).toUpperCase() + user.substring(1).toLowerCase();
+		
 		
 		String drawLine= "_________________________________";
 		int minimum = 1000;
@@ -138,14 +153,22 @@ static Scanner scan = new Scanner(System.in);
 		
 		if(amount < (minimum*qty) && amount >= 0){
 			// Send to DENY Pill
-			System.out.println("\n " + screenName + " applied for " + qty + "accounts and deposited "
+			System.out.println("\n " + screenName + " applied for (" + qty + ") accounts and deposited $"
 					+ amount + "\n");
+			
+			System.out.println(" \t" + screenName + ", some or all accounts might be DENIED");
+			System.out.println(" \tMinimum Needed: ($" + (double)minimum*qty + ")");
+			
+			IO.registerList.get(customerTag).setBalance(amount);
+			IO.registerList.get(customerTag).setAccount(new Account(qty, 0, special));
 			
 		}
 		else if(amount >= (minimum*qty)){
 			// Send to APPROVED Pill
-			System.out.println("\n " + screenName + " applied for " + qty + "accounts and deposited "
+			System.out.println("\n " + screenName + " applied for (" + qty + ") accounts and deposited $"
 					+ amount + "\n");
+			IO.registerList.get(customerTag).setBalance(amount);
+			IO.registerList.get(customerTag).setAccount(new Account(qty, 0, special));
 		}
 		else {
 			System.out.println(screenName + " Invalid Inputs Try again");

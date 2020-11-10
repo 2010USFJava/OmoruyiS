@@ -69,11 +69,11 @@ public class Register extends Customer implements Serializable{
 	@Override
 	public String toString() {
 		return "("
-				+ "user: " + username  
-				+ ", pass: " + password 
-				+ ", first: " + first  
-				+ ", last: " + last  
-				+ ")";
+				+ "Username: " + username + "\t" +
+				" Password: " + password +	"\t" +
+				" First: " + first  + "\t" +
+				" Last: " + last  + 
+				")";
 	}
 
 	

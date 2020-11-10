@@ -2,6 +2,7 @@ package com.revature.actions;
 
 import java.util.Scanner;
 
+import com.revature.accounts.Account;
 import com.revature.bean.Messages;
 import com.revature.io.IO;
 import com.revature.menu.CustomerMenu;
@@ -11,7 +12,7 @@ public class View {
 	
 	static Scanner scan = new Scanner(System.in);
 	
-	public static void viewMenu( int customerTag ) {
+	public static void viewMenu( int customerTag) {
 		
 		
 		String first = IO.registerList.get(customerTag).getFirst();
@@ -20,7 +21,12 @@ public class View {
 		
 		String screenName  = user.substring(0,1).toUpperCase() + user.substring(1).toLowerCase();
 		//String accountNumber = IO.registerList.get(customerTag).getUsername();
-		//String balance = IO.registerList.get(customerTag).getUsername();
+		
+		double balance = IO.registerList.get(customerTag).getBalance();
+	
+		int type = IO.registerList.get(customerTag).getAccount().getTypeOfAccount();
+		int qty = IO.registerList.get(customerTag).getAccount().getQty();
+		long no = IO.registerList.get(customerTag).getAccount().getAccountNumber();
 		
 		//String account = IO.registerList.get(customerTag).getAccount();
 		
@@ -45,11 +51,13 @@ public class View {
 		System.out.println("\n\n Account Information");
 		System.out.println(starLine);
 		
-		System.out.println(" Account No      : ");
+		System.out.println(" Account No      : " + no);
 		
-		System.out.println(" Account Type(s) : ");
+		System.out.println(" Account Type(s) : " + type);
 		
-		System.out.println(" Balance         : ");
+		System.out.println(" Account qty     : " + qty);
+		
+		System.out.println(" Balance         : " + balance);
 		
 		System.out.println(" Transfers       : ");
 		

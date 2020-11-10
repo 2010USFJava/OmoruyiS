@@ -24,7 +24,7 @@ public class BankingTest {
 	@Test
 	public void testTemplateMenuVersion() {
 		
-		int expected = 1;
+		int expected = 2;
 		
 		int version = 2;
 		

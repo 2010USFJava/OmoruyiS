@@ -46,8 +46,7 @@ public class CustomerMenu {
 	public static void customerAccountMenu(String screenName, int customerTag) {
 		
 //		if accounts equal 0
-//		System.out.println("\n\tCurrently you have 0 accounts with us, " +
-//				"\n\tApply Now " + screenName + " for great offers!!! \n");
+		System.out.println("\n\tApply Now " + screenName + " for great offers!!! \n");
 		
 		
 		Menu.templateMenu("CUSTOMER ACCOUNT MENU", 4);
@@ -193,7 +192,7 @@ public class CustomerMenu {
 		
 		int size = IO.registerList.size(); //[1]
 		
-		if(IO.registerList.isEmpty() == false) { 
+		//if(IO.registerList.isEmpty() == false) { 
 			for (int i = 0; i < size ; i++) {
 				
 				String registerUser = IO.registerList.get(i).getUsername(); 
@@ -208,23 +207,15 @@ public class CustomerMenu {
 					customerAccountMenu(screenName, customerTag); //[3]
 				}
 			}
-		}
-		else if(IO.registerList.isEmpty() == true) {
-			System.out.println("No Accounts are currently registered");
-			customerMenu();
-		}
 		
 		/* 
 		 * it matches login DOES NOT match DENY and ask the login user to
 		 * try again. 
 		 */
-		else {	
+			
 			System.out.println("\n\tIncorrect Login Attempt!!!\n"); //[4]
 			Menu.tryAgainMenu(2);
-		}
 	}
-	
-
 	
 
 } // End of Class
