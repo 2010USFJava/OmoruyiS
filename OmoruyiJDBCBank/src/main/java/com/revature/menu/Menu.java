@@ -1,5 +1,10 @@
 package com.revature.menu;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /*
  * [A] Main Menu : Lists the (3) Primary Menus 
  * 		[1] Main Menu
@@ -14,6 +19,8 @@ package com.revature.menu;
 
 import java.util.Scanner;
 
+import com.revature.beans.Register;
+import com.revature.daoimpl.RegisterDaoImpl;
 import com.revature.io.IO;
 import com.revature.io.Logging;
 import com.revature.msg.Msg;
@@ -39,6 +46,10 @@ public class Menu { //[A]
 			break;
 		case "v":
 			viewMenu();
+			mainMenu();
+			break;
+		case "d": /* Hide in production */
+			debugMenu();
 			break;
 		case "q":
 			Msg.quitMsg();
@@ -64,6 +75,8 @@ public class Menu { //[A]
 			System.out.println("\n\t[c]ustomer");
 			System.out.println("\t[a]dmin");
 			System.out.println("\n\t[v]iew info");
+			System.out.println("\n\t[d]ebug"); /* hide in production */
+			
 		}
 		else if(version == 2) { // CUSTOMER option(s)
 			System.out.println("\n\t[r]egister");
@@ -76,10 +89,11 @@ public class Menu { //[A]
 			System.out.println("\n\t[p]revious menu");
 		}
 		else if(version == 4) { // CUSTOMER ACCOUNT option(s)
-			System.out.println("\n\t[a]pply");
-			System.out.println("\t[d]eposit");
-			System.out.println("\t[t]ransfer");
-			System.out.println("\t[v]iew info");
+			System.out.println("\n\t[c]reate");
+			System.out.println("\t[d]elete");
+			System.out.println("\t[a]dd deposit");
+			System.out.println("\t[w]ithdrawl");
+			System.out.println("\n\t[v]iew");
 		}
 		else if(version == 6) { 
 			System.out.println(
@@ -138,12 +152,18 @@ public class Menu { //[A]
 		int size = IO.registerList.size();
 		
 		System.out.println(" List of Registered Customers\n");
-		System.out.println(" " + IO.registerList);
+		System.out.println(" " + IO.registerList + " " + IO.accountList);
+		
 		System.out.println("\n Total Registered Customers: " + size + "\n");
-		Logging.LogIt("info", IO.registerList + " was created!");
+		
+	}
+	/* DEBUG */
+	
+	public static void debugMenu(){
 		
 		
 	}
+	
 
 
 }

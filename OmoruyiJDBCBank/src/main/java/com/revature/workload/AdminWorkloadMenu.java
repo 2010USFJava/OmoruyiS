@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.revature.msg.Msg;
-import com.revature.accounts.Register;
+import com.revature.beans.Register;
 import com.revature.io.IO;
 import com.revature.io.InitializeData;
 import com.revature.io.Logging;

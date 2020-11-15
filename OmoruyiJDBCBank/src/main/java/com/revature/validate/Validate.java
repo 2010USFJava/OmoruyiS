@@ -2,6 +2,8 @@ package com.revature.validate;
 
 import java.util.Scanner;
 
+import com.revature.io.IO;
+
 
 public class Validate {
 	
@@ -31,6 +33,10 @@ public class Validate {
 		} while (num < 0);
 		
 		return num;
+	}
+	
+	public static int validateUid() {
+		return 0;
 	}
 
 
