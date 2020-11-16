@@ -29,6 +29,19 @@ public class RegisterDaoImpl implements RegisterDao{
 		ps.executeUpdate();
 	}
 	
+	public void insertUserUpdates(Register p) throws SQLException {
+		Connection conn = cf.getConnection();
+		String sql = "update register set first=?, last=?, password=? where uid=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1,  p.getFirst()); // referring to 4nd ?
+		ps.setString(2,  p.getLast()); // referring to 5nd ?
+		ps.setString(3,  p.getPassword()); // referring to 3nd 
+		ps.setInt(4, p.getUid()); 
+		ps.executeUpdate();
+	}
+	
+	
+	
 	@Override
 	public Register retrievedById(int uid) throws SQLException {
 		
@@ -43,6 +56,15 @@ public class RegisterDaoImpl implements RegisterDao{
 			r1 = new Register(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),  rs.getString(5));
 				}		
 		return r1;
+	}
+	
+	public void deleteUser(Register p) throws SQLException {
+		
+		Connection conn = cf.getConnection();
+		String sql = "delete from account where uid=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, p.getUid()); 
+		ps.executeUpdate();
 	}
 	
 	

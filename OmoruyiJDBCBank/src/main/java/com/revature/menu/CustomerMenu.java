@@ -2,10 +2,13 @@ package com.revature.menu;
 
 import java.util.Scanner;
 
-import com.revature.actions.Create;
+import com.revature.actions.Deposit;
+import com.revature.actions.Update;
 import com.revature.actions.View;
+import com.revature.actions.Withdrawal;
 import com.revature.beans.Account;
 import com.revature.beans.Register;
+import com.revature.io.DatabaseProcessing;
 import com.revature.io.IO;
 import com.revature.io.InitializeData;
 import com.revature.io.Logging;
@@ -49,17 +52,20 @@ public class CustomerMenu {
 		
 		String choice = scan.nextLine();
 		switch(choice.toLowerCase()) {
-		case "c":
-			Create.create(customerTag); 
-			break;
 		case "d":
-			//Delete.depositMenu(customerTag); 
-			break;
-		case "a": 
-			//Deposit.transferMenu(customerTag);
+			Deposit.deposit(customerTag); 
+			customerAccountMenu(screenName, customerTag);
 			break;
 		case "w":			
-			//Withdrawal.withdrawalMenu(customerTag);
+			Withdrawal.withdrawal(customerTag);
+			customerAccountMenu(screenName, customerTag);
+			break;
+		case "u":
+			Update.update(customerTag);
+			customerAccountMenu(screenName, customerTag);
+		case "r":
+			//Delete.deposit(customerTag);
+			customerAccountMenu(screenName, customerTag);
 			break;
 		case "v": 
 			View.viewMenu(customerTag); // Layout Customer class here
@@ -82,7 +88,7 @@ public class CustomerMenu {
 		System.out.println("\tREGISTRATION Menu");
 		System.out.println(drawLine);
 		registerUsers();
-		System.out.println("\n\t Customer Registration Complete!!!\n");
+		System.out.println("\n\tCustomer Registration Complete!!!\n");
 		customerMenu();
 	}
 	
@@ -97,13 +103,13 @@ public class CustomerMenu {
 	public static void registerUsers() {
 
 		
-		System.out.print("User: ");
+		System.out.print(" User: ");
 		String user = scan.nextLine();
-		System.out.print("Password: ");
+		System.out.print(" Password: ");
 		String pass = scan.nextLine();
-		System.out.print("first: ");
+		System.out.print(" first: ");
 		String first = scan.nextLine();
-		System.out.print("last: ");
+		System.out.print(" last: ");
 		String last = scan.nextLine();
 		
 		Msg.processMsg();
@@ -113,31 +119,28 @@ public class CustomerMenu {
 			String registerUser = IO.registerList.get(i).getUsername(); 
 			
 			if(user.equals(registerUser)) { 
-				System.out.println("\nUsername '" + user + "' already in use!!! \n");
-				Logging.LogIt("error ", user + " was not created!");
+				System.out.println("\n Username '" + user + "' already in use!!! \n");
+				Logging.LogIt(" error ", user + " was not created!");
 				Menu.tryAgainMenu(1);  //(Note: 1 = register ; 2 = login)
 			}
 		}
 		int uid = size+1;
 		Register registeringCustomer = new Register(uid, user, pass, first, last);  
-		//SIO.registerList.add(registeringCustomer);
 		
+		int aid = size+10000+1;			//Account(aid, balance, qty, deposit);
+		DatabaseProcessing.dbRegisterinsert(registeringCustomer);
 		
-		int aid = size+0001;			//Account(aid, balance, qty, deposit);
-		Account accountCustomer = new Account(aid, 0.00, 0, 0.00);  
-		IO.accountList.add(accountCustomer);
+		Account accountCustomer = new Account(aid, 0.00, 1, 0.00, 0.00);
+		DatabaseProcessing.dbAccountinsert(accountCustomer);
 		
 		InitializeData.writeToDatabase();
-		
-        //DatabaseProcessing.dbRegisterinsert(registeringCustomer);
-		
 	}
 	
 	public static void loginUsers() {
 		
-		System.out.print("User: ");
+		System.out.print(" User: ");
 		String user = scan.nextLine();
-		System.out.print("Password: ");
+		System.out.print(" Password: ");
 		String pass = scan.nextLine();
 		
 		int size = IO.registerList.size(); //[1]
@@ -147,7 +150,7 @@ public class CustomerMenu {
 				
 				if(user.equals(registerUser) &&  pass.equals(registerPass)) { 
 					String screenName  = user.substring(0,1).toUpperCase() + user.substring(1).toLowerCase();
-					System.out.println(" " + screenName + ", Welcome to Casino Royal Banking ");
+					System.out.println("\n " + screenName + ", Welcome to Casino Royal Banking ");
 					int customerTag = i;
 					customerAccountMenu(screenName, customerTag); 
 				}

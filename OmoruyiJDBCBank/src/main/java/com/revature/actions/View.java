@@ -2,7 +2,6 @@ package com.revature.actions;
 
 import java.util.Scanner;
 
-import com.revature.beans.Account;
 import com.revature.io.IO;
 import com.revature.menu.CustomerMenu;
 import com.revature.menu.Menu;
@@ -25,11 +24,8 @@ public class View {
 		int aid = IO.accountList.get(customerTag).getAid();
 		Double balance = IO.accountList.get(customerTag).getBalance();
 		Double deposit = IO.accountList.get(customerTag).getDeposit();
-		//Double wd = Create.withdrawal();
+		Double withdrawal = IO.accountList.get(customerTag).getWithdrawal();
 		
-		System.out.println(aid + balance + deposit);
-	
-				
 		
 		System.out.println("\n");
 		System.out.println(" Personal Information");
@@ -56,7 +52,7 @@ public class View {
 		
 		System.out.println(" Balance          : " + balance);
 		
-		System.out.println(" Last Withdrawl   : " + 0.00);
+		System.out.println(" Last Withdrawl   : " + withdrawal);
 		
 		System.out.println(" Last Deposit     : " + deposit);
 		

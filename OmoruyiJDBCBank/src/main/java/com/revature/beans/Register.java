@@ -24,24 +24,9 @@ public class Register implements Serializable{
 		IO.registerList.add(this);
 		IOWithCollections.writeInfoFile(IO.registerList, IO.accountList);
 	}
-		
-	public Register(String username) {
-		super();
-		this.username = username;
-		IO.registerList.add(this);
-		IOWithCollections.writeInfoFile(IO.registerList, IO.accountList);
-		Logging.LogIt("info", "Customer, "+ this.username + ", has registered");
-	}
 	
-	public Register(String username, String password, String first, String last) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.first = first;
-		this.last = last;
-	}
 
-	public Register(int uid, String username, String password, String first, String last) {
+	public Register(int uid, String username, String password, String first, String last) { // for customer registration
 		super();
 		this.uid = uid;
 		this.username = username;
@@ -97,8 +82,8 @@ public class Register implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Register [uid=" + uid + ", username=" + username + ", password=" + password + ", first=" + first
-				+ ", last=" + last + "]";
+		return "Register [uid: " + uid + ", user: " + username + ", pass: " + password + ", first: " + first
+				+ ", last: " + last + "]";
 	}
 
 }

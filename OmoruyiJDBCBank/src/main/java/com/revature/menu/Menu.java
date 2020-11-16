@@ -1,9 +1,5 @@
 package com.revature.menu;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /*
  * [A] Main Menu : Lists the (3) Primary Menus 
@@ -20,9 +16,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.revature.beans.Register;
-import com.revature.daoimpl.RegisterDaoImpl;
+import com.revature.io.DatabaseProcessing;
 import com.revature.io.IO;
-import com.revature.io.Logging;
 import com.revature.msg.Msg;
 import com.revature.workload.AdminWorkloadMenu;
 
@@ -48,9 +43,9 @@ public class Menu { //[A]
 			viewMenu();
 			mainMenu();
 			break;
-		case "d": /* Hide in production */
-			debugMenu();
-			break;
+//		case "d": /* Hide in production */
+//			debugMenu();
+//			break;	
 		case "q":
 			Msg.quitMsg();
 			mainMenu();
@@ -89,19 +84,22 @@ public class Menu { //[A]
 			System.out.println("\n\t[p]revious menu");
 		}
 		else if(version == 4) { // CUSTOMER ACCOUNT option(s)
-			System.out.println("\n\t[c]reate");
-			System.out.println("\t[d]elete");
-			System.out.println("\t[a]dd deposit");
-			System.out.println("\t[w]ithdrawl");
-			System.out.println("\n\t[v]iew");
+			System.out.println(
+					  "\n\t[d]eposit"
+					+ "\n\t[w]ithdrawal"
+					+ "\n\t[u]pdate"
+					+ "\n\t[r]emove"
+					+ "\n\n\t[v]iew"
+			);
 		}
 		else if(version == 6) { 
 			System.out.println(
-					  "\n\t[v]iew"
+					 "\n\n\t[s]earch user"
+					+  "\n\t[v]iew"
 					+ "\n\t[c]reate"
 					+ "\n\t[u]pdate"		  
-					+ "\n\t[d]elete"
-					+ "\n\n\t[s]earch user"
+					+ "\n\n\t[d]elete"
+					
 			);
 		}
 		else if(version == 10) { // TRY AGAIN options(s)
@@ -128,9 +126,11 @@ public class Menu { //[A]
 			else if(userType == 3) {
 				EmployeeMenu.loginEmployee();
 			}
-			else if(userType == 4) {
+			else if(userType == 4) { // for admin
 				AdminWorkloadMenu.createCustomerList();
 			}
+			else if(userType == 5) // for customers
+				//CustomerMenu.customerAccountMenu();
 			break;
 		case "n":
 			CustomerMenu.customerMenu();
@@ -152,7 +152,11 @@ public class Menu { //[A]
 		int size = IO.registerList.size();
 		
 		System.out.println(" List of Registered Customers\n");
-		System.out.println(" " + IO.registerList + " " + IO.accountList);
+		
+		for(int i = 0; i<size; i++) {
+			System.out.println(" " + IO.registerList.get(i) + 
+					           "\t\t" + IO.accountList.get(i));
+		}
 		
 		System.out.println("\n Total Registered Customers: " + size + "\n");
 		
@@ -160,8 +164,7 @@ public class Menu { //[A]
 	/* DEBUG */
 	
 	public static void debugMenu(){
-		
-		
+				
 	}
 	
 

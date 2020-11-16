@@ -1,22 +1,44 @@
 package com.revature.beans;
 
-public class Account {
+import java.io.Serializable;
+
+import com.revature.io.IO;
+import com.revature.io.IOWithCollections;
+import com.revature.io.Logging;
+
+public class Account implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1470638531199181458L;
 	private int aid;
 	private double balance;
 	private int qty;
 	private double deposit;
+	private double withdrawal;
 //	private int typeOfAccount;
 	
 	public Account() {
 		super();
-		// TODO Auto-generated constructor stub
+		IO.accountList.add(this);
 	}
+	
+	public Account(int aid, double balance) {
+		super();
+		this.aid = aid;
+		this.balance = balance;
+		IO.accountList.add(this);
+		}
 
 	public Account(int aid, double balance, double deposit) {
 		super();
 		this.aid = aid;
 		this.balance = balance;
 		this.balance = deposit;
+		IO.accountList.add(this);
+		IOWithCollections.writeInfoFile(IO.registerList, IO.accountList);
+		Logging.LogIt("info", "Account, "+ this.aid + ", was updated");
 	}
 	
 	public Account(int aid, double balance, int qty, double deposit) {
@@ -25,6 +47,29 @@ public class Account {
 		this.balance = balance;
 		this.qty = qty;
 		this.deposit = deposit;
+		IO.accountList.add(this);
+		IOWithCollections.writeInfoFile(IO.registerList, IO.accountList);
+		Logging.LogIt("info", "Account, "+ this.aid + ", was updated");
+	}
+	
+	public Account(int aid, double balance, int qty, double deposit, double withdrawal) {
+		super();
+		this.aid = aid;
+		this.balance = balance;
+		this.qty = qty;
+		this.withdrawal = withdrawal;
+		IO.accountList.add(this);
+		IOWithCollections.writeInfoFile(IO.registerList, IO.accountList);
+		Logging.LogIt("info", "Account, "+ this.aid + ", was updated");
+	}
+	
+	
+	public double getWithdrawal() {
+		return withdrawal;
+	}
+
+	public void setWithdrawal(double withdrawal) {
+		this.withdrawal = withdrawal;
 	}
 
 	public double getDeposit() {
@@ -66,7 +111,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [aid=" + aid + ", balance=" + balance + ", qty=" + qty + ", deposit=" + deposit + "]";
+		return "Account [aid: " + aid + ", balance: " + balance + ", qty: " + qty + ", last_deposit: " + deposit + ", last_withdrawal: " + withdrawal +"]";
 	}
 	
 	
