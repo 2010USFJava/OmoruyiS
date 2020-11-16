@@ -18,28 +18,27 @@ public class RegisterDaoImpl implements RegisterDao{
 		
 		Connection conn = cf.getConnection();
 		
-		String sql = "insert into register values(?,?,?,?,?)";
+		String sql = "insert into register values(DEFAULT,?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
-		ps.setInt(1, p.getUid()); // Only referring to 1stps ?
-		ps.setString(2,  p.getUsername()); // referring to 2nd ?
-		ps.setString(3,  p.getPassword()); // referring to 3nd ?
-		ps.setString(4,  p.getFirst()); // referring to 4nd ?
-		ps.setString(5,  p.getLast()); // referring to 5nd ?
+		//ps.setInt(1, p.getUid()); // Only referring to 1stps ?
+		ps.setString(1,  p.getUsername()); // referring to 2nd ?
+		ps.setString(2,  p.getPassword()); // referring to 3nd ?
+		ps.setString(3,  p.getFirst()); // referring to 4nd ?
+		ps.setString(4,  p.getLast()); // referring to 5nd ?
 		ps.executeUpdate();
 	}
 	
 	public void insertUserUpdates(Register p) throws SQLException {
 		Connection conn = cf.getConnection();
-		String sql = "update register set first=?, last=?, password=? where uid=?";
+		String sql = "update register set first=?, last=?, password=? where username=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1,  p.getFirst()); // referring to 4nd ?
 		ps.setString(2,  p.getLast()); // referring to 5nd ?
 		ps.setString(3,  p.getPassword()); // referring to 3nd 
-		ps.setInt(4, p.getUid()); 
+		ps.setString(4, p.getUsername()); 
 		ps.executeUpdate();
 	}
-	
 	
 	
 	@Override
@@ -52,8 +51,7 @@ public class RegisterDaoImpl implements RegisterDao{
 		ResultSet rs = ps.executeQuery();
 		Register r1 = null;
 		while(rs.next()) {
-			
-			r1 = new Register(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),  rs.getString(5));
+			r1 = new Register(rs.getString(1), rs.getString(2),  rs.getString(3), rs.getString(4));
 				}		
 		return r1;
 	}
@@ -61,9 +59,9 @@ public class RegisterDaoImpl implements RegisterDao{
 	public void deleteUser(Register p) throws SQLException {
 		
 		Connection conn = cf.getConnection();
-		String sql = "delete from account where uid=?";
+		String sql = "delete from register where username=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setInt(1, p.getUid()); 
+		ps.setString(1, p.getUsername()); 
 		ps.executeUpdate();
 	}
 	

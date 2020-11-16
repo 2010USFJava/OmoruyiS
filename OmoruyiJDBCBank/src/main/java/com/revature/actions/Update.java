@@ -55,7 +55,7 @@ public class Update {
 	
 	public static void personInfo(int customerTag){
 		
-		int uid = IO.registerList.get(customerTag).getUid();
+		//int uid = IO.registerList.get(customerTag).getUid();
 		String user = IO.registerList.get(customerTag).getUsername();
 		String first = IO.registerList.get(customerTag).getFirst();
 		String last = IO.registerList.get(customerTag).getLast();
@@ -71,7 +71,7 @@ public class Update {
 		pass = updatepersonInfo(customerTag, pass, "Password ");
 		IO.registerList.get(customerTag).setPassword(pass);
 		
-		Register customer = new Register(uid, user, pass, first, last);
+		Register customer = new Register(user, pass, first, last);
 		try {
 			adi.insertUserUpdates(customer);
 			

@@ -31,10 +31,10 @@ public class DatabaseProcessing {
 				}
 		}
 		
-	public static void dbAccountinsert(Account accountingCustomer) {
+	public static void dbAccountinsert(Account accountingCustomer, Register registeringCustomer ) {
 		AccountDao pd = new AccountDaoImpl();
 		try {
-			pd.registerAccount(accountingCustomer);
+			pd.registerAccount(accountingCustomer, registeringCustomer);
 			} catch (SQLException e) {
 				e.printStackTrace();
 				}

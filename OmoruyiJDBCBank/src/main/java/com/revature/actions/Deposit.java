@@ -40,8 +40,8 @@ public class Deposit {
 		"\n balance is now: " + balance );
 		
 		try {
-			adi.insertAccountBalance(customer);
-			adi.insertAccountDeposit(customer);
+			adi.insertAccountBalance(customer, IO.registerList.get(customerTag));
+			adi.insertAccountDeposit(customer, IO.registerList.get(customerTag));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

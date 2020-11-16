@@ -42,8 +42,8 @@ public class Withdrawal {
 					"\n balance is now: " + balance );
 					
 					try {
-						adi.insertAccountWithdrawal(customer);
-						adi.insertAccountBalance(customer);
+						adi.insertAccountWithdrawal(customer, IO.registerList.get(customerTag));
+						adi.insertAccountBalance(customer, IO.registerList.get(customerTag));
 						
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block

@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import com.revature.msg.Msg;
 import com.revature.io.IO;
-import com.revature.io.InitializeData;
 import com.revature.validate.Validate;
 import com.revature.workload.AdminWorkloadMenu;
 
@@ -42,7 +41,6 @@ public class EmployeeMenu {
 		}
 	}
 	
-	
 	public static void registerEmployeeMenu() {
 		
 		CustomerMenu.registerMenu();
@@ -65,7 +63,6 @@ public class EmployeeMenu {
 		 * Calls login method
 		 * 
 		 */
-		
 		loginEmployee();	
 	}
 	
@@ -80,13 +77,10 @@ public class EmployeeMenu {
 		 * Calls login method
 		 * 
 		 */
-		
 		loginEmployee();
 	}
 	
 	public static void loginEmployee() {
-		
-		//InitializeData.initializeRegistrationDatabase();
 		
 		int adminKey = 111;
 		
@@ -124,8 +118,7 @@ public class EmployeeMenu {
 		/* 
 		 * it matches login DOES NOT match DENY and ask the login user to
 		 * try again. 
-		 */
-			
+		 */	
 		System.out.println("\n\tIncorrect Login Attempt!!!\n"); //[4]
 		Menu.tryAgainMenu(3); //(Note: 3 = employee login)
 		

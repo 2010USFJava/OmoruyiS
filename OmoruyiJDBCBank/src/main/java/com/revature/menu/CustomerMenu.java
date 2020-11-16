@@ -102,7 +102,6 @@ public class CustomerMenu {
 	
 	public static void registerUsers() {
 
-		
 		System.out.print(" User: ");
 		String user = scan.nextLine();
 		System.out.print(" Password: ");
@@ -124,14 +123,13 @@ public class CustomerMenu {
 				Menu.tryAgainMenu(1);  //(Note: 1 = register ; 2 = login)
 			}
 		}
-		int uid = size+1;
-		Register registeringCustomer = new Register(uid, user, pass, first, last);  
+		Register registeringCustomer = new Register(user, pass, first, last);  
 		
-		int aid = size+10000+1;			//Account(aid, balance, qty, deposit);
+		int aid = size+10000+1;			
 		DatabaseProcessing.dbRegisterinsert(registeringCustomer);
 		
 		Account accountCustomer = new Account(aid, 0.00, 1, 0.00, 0.00);
-		DatabaseProcessing.dbAccountinsert(accountCustomer);
+		DatabaseProcessing.dbAccountinsert(accountCustomer, registeringCustomer);
 		
 		InitializeData.writeToDatabase();
 	}

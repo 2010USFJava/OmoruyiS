@@ -14,7 +14,7 @@ public class View {
 		
 		
 		String starLine = "************************************************";
-		int uid = IO.registerList.get(customerTag).getUid();
+		//int uid = IO.registerList.get(customerTag).getUid();
 		String first = IO.registerList.get(customerTag).getFirst();
 		String last = IO.registerList.get(customerTag).getLast();
 		String user = IO.registerList.get(customerTag).getUsername();
@@ -33,7 +33,7 @@ public class View {
 		
 		System.out.println(" First : "  + first  +  "\t" + "\tLast : " + last );
 		
-		System.out.println(" uid : " + uid + "\n");
+		System.out.println(" uid : " + "" + "\n");
 		System.out.println(" Username : " + user + "\t" + "Password : " + "********" + "\n"); 
 
 		

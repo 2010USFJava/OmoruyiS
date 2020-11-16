@@ -84,22 +84,21 @@ public class AdminWorkloadMenu {
 				Menu.tryAgainMenu(4);  //(Note: 4 = createCustomerList())
 				}
 			}
-			int uid = size+1;
-			Register r1 = new Register(uid, user, pass, first, last);
-			createCustomer(r1);
-			DatabaseProcessing.dbRegisterinsert(r1);
-			
-			int aid = uid+10000;
-			Account accountCustomer = new Account(aid, 0.00, 1, 0.00, 0.00);
-			DatabaseProcessing.dbAccountinsert(accountCustomer);
+			Register r1 = new Register(user, pass, first, last);
+			createCustomerAndAccount(r1, size+1);
+
 			navmenu(); // back, previous, exit		 
 	}
 	
-	public static void createCustomer(Register person) {
-		//IO.registerList.add(person);
+	public static void createCustomerAndAccount(Register person, int aid) {
+		Account accountCustomer = new Account(aid, 0.00, 1, 0.00, 0.00);
+		
+		DatabaseProcessing.dbRegisterinsert(person);
+		DatabaseProcessing.dbAccountinsert(accountCustomer, person);
 		Logging.LogIt("info", person + " was created");
+		Logging.LogIt("info", accountCustomer + " was created");
+		
 	}
-	
 	
 	public static void deleteCustomerList() {
 		
@@ -109,7 +108,6 @@ public class AdminWorkloadMenu {
 		
 		for (int i = 0; i < size ; i++) {
 			String registerUser = IO.registerList.get(i).getUsername(); 
-			//IO.registerList.get(i);
 			if(user.equals(registerUser)) {
 				
 				Register r1 = IO.registerList.get(i);
@@ -118,14 +116,12 @@ public class AdminWorkloadMenu {
 						"r1: " + r1 + "\n" +
 						"i:  " + i);
 				deleteCustomer(r1, a1, i); //issue
-				
-				
+			
 				}
 			}
-
 	}
 	
-	public static void deleteCustomer(Register person, Account a1, int i) {
+	public static void deleteCustomer(Register person, Account aPerson, int i) {
 		String user = person.getUsername();
 		IO.registerList.remove(i);
 		IO.accountList.remove(i);
@@ -134,26 +130,21 @@ public class AdminWorkloadMenu {
 		
 		try {
 			rdi.deleteUser(person);
-			adi.deleteAccount(a1);;
+			adi.deleteAccount(aPerson, IO.registerList.get(i));
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		InitializeData.writeToDatabase();
 		viewCustomerList();
 	}
 	
-	
-	public static void searchCustomerList(){
+	public static void searchCustomerList(){ /* SEARCH */
 		
 		System.out.print("Which user would you like to search? ");
 		String user = scan.nextLine();
 		
-		Register userTag = searchCustomer(user);
-		
-		//System.out.print("\n Customer: " + userTag + "\n");
+		searchCustomer(user);
 		
 		navmenu();
 	}
@@ -174,7 +165,7 @@ public class AdminWorkloadMenu {
 	}
 	
 	
-	public static void viewCustomerList() {
+	public static void viewCustomerList() { /* VIEW */
 
 		int size = IO.registerList.size();
 		System.out.println("\n Total Registered Customers: " + size + "\n");
@@ -183,26 +174,18 @@ public class AdminWorkloadMenu {
 		for(int i = 0; i < IO.registerList.size(); i++ ) {
 			System.out.println(" " + i + " " + IO.registerList.get(i) );
 			System.out.println(" " + i + " " + IO.accountList.get(i) + "\n");
-			
 		}
 		
-		// [6] PL/SQL with at least one user defined function
-		
+		/* [6] PL/SQL with at least one user defined function*/
 		try {
 			System.out.println("\n Equity: " + adi.retrievedAssets());
 			
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
-		
-	
-		
 		navmenu();
 	}
-	
-
-	
+		
 	public static void navmenu() {
 		
 		System.out.println("\n\t[p]revious" + "\t[e]xit" +  "\t[q]uit");

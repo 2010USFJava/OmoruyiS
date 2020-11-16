@@ -17,7 +17,6 @@ public class Account implements Serializable{
 	private int qty;
 	private double deposit;
 	private double withdrawal;
-//	private int typeOfAccount;
 	
 	public Account() {
 		super();

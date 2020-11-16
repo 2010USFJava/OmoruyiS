@@ -13,7 +13,7 @@ public class Register implements Serializable{
 	 */
 	private static final long serialVersionUID = -5036266905878206903L;
 	
-	private int uid;
+	//private int uid;
 	private String username; 
 	private String password;
 	private String first;
@@ -26,9 +26,9 @@ public class Register implements Serializable{
 	}
 	
 
-	public Register(int uid, String username, String password, String first, String last) { // for customer registration
+	public Register(String username, String password, String first, String last) { // for customer registration
 		super();
-		this.uid = uid;
+		//this.uid = uid;
 		this.username = username;
 		this.password = password;
 		this.first = first;
@@ -36,16 +36,8 @@ public class Register implements Serializable{
 		IO.registerList.add(this);
 		IOWithCollections.writeInfoFile(IO.registerList, IO.accountList);
 		Logging.LogIt("info", "Customer, "+ this.username + ", has registered");
-		//add postgre here	
 	}
 
-	public int getUid() {
-		return uid;
-	}
-
-	public void setUid(int uid) {
-		this.uid = uid;
-	}
 
 	public String getUsername() {
 		return username;
@@ -82,7 +74,7 @@ public class Register implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Register [uid: " + uid + ", user: " + username + ", pass: " + password + ", first: " + first
+		return "Register [user: " + username + ", pass: " + password + ", first: " + first
 				+ ", last: " + last + "]";
 	}
 
