@@ -9,5 +9,9 @@
       # git clone -b Project_0 https://github.com/2010USFJava/OmoruyiS.git
       
       # cd  OmoruyiS/OmoruyiJDBCBank/
+      # cd src/main/java/com/revature
 
-[2] 
+[2] Compile Java Program 
+
+# javac */*.java
+
