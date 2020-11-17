@@ -105,7 +105,7 @@ public class EmployeeMenu {
 					
 					String screenName  = user.substring(0,1).toUpperCase() + user.substring(1).toLowerCase();
 					System.out.println("\n\t " + screenName + ", Welcome ADMIN \n");
-					System.out.println("\n\t The following accounts need approval \n");
+					
 					AdminWorkloadMenu.adminWorkLoadMenu();
 					}
 				}
@@ -114,7 +114,6 @@ public class EmployeeMenu {
 			System.out.println("No Accounts are currently registered");
 			employeeMenu();
 		}
-		
 		/* 
 		 * it matches login DOES NOT match DENY and ask the login user to
 		 * try again. 

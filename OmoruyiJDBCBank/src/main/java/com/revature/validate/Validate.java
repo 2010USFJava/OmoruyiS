@@ -2,7 +2,6 @@ package com.revature.validate;
 
 import java.util.Scanner;
 
-import com.revature.io.IO;
 
 
 public class Validate {

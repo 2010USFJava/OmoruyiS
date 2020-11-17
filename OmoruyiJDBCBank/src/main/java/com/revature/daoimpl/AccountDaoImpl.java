@@ -1,5 +1,9 @@
 package com.revature.daoimpl;
 
+/*
+ * (6) Total Account methods to test with JUnit
+ */
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -81,20 +85,6 @@ public static ConnFactory cf = ConnFactory.getInstance();
 		return rs.getDouble(1);
 	}
 	
-	@Override
-	public Account retrievedById(int aid) throws SQLException {
-		
-		Connection conn = cf.getConnection();
-		String sql = "select * from account where aid=?";
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setInt(1, aid); // Only referring to 1stps ?
-		ResultSet rs = ps.executeQuery();
-		Account a1 = null;
-		while(rs.next()) {
-			a1 = new Account(rs.getInt(1), rs.getConcurrency());
-			}
-		return a1;
-	}
 
 	
 	

@@ -15,8 +15,6 @@ package com.revature.menu;
 
 import java.util.Scanner;
 
-import com.revature.beans.Register;
-import com.revature.io.DatabaseProcessing;
 import com.revature.io.IO;
 import com.revature.msg.Msg;
 import com.revature.workload.AdminWorkloadMenu;
@@ -39,11 +37,11 @@ public class Menu { //[A]
 		case "a":
 			EmployeeMenu.employeeMenu();
 			break;
-		case "v":
-			viewMenu();
-			mainMenu();
-			break;
-//		case "d": /* Hide in production */
+//		case "v":		 /* Hide in production */
+//			viewMenu();
+//			mainMenu();
+//			break;
+//		case "d": 		/* Hide in production */
 //			debugMenu();
 //			break;	
 		case "q":
@@ -65,23 +63,28 @@ public class Menu { //[A]
 		System.out.println("\n\t" +  typeMenu   );
 		System.out.println(drawLine);
 		
-		// MENUS 
+		// MENU VERSION(S)
 		if(version == 1) { // MAIN option(s)
-			System.out.println("\n\t[c]ustomer");
-			System.out.println("\t[a]dmin");
-			System.out.println("\n\t[v]iew info");
-			System.out.println("\n\t[d]ebug"); /* hide in production */
-			
+			System.out.println(
+					  "\n\t[c]ustomer"
+					+ "\n\t[a]dmin"
+				  //+ "\n\t[v]iew info"
+				  //+ "\n\t[d]ebug" 	/* hide in production */
+					);
 		}
 		else if(version == 2) { // CUSTOMER option(s)
-			System.out.println("\n\t[r]egister");
-			System.out.println("\t[l]ogin");
-			System.out.println("\n\t[p]revious menu");
+			System.out.println(
+					  "\n\t[r]egister"
+					+ "\n\t[l]ogin"
+					+ "\n\t[p]revious menu"
+					);
 		}
 		else if(version == 3) { // EMPLOYEE option(s)
-			System.out.println("\n\t[r]egister");
-			System.out.println("\t[l]ogin");
-			System.out.println("\n\t[p]revious menu");
+			System.out.println(
+					  "\n\t[r]egister"
+		            + "\n\t[l]ogin"
+			        + "\n\t[p]revious menu"
+		            );
 		}
 		else if(version == 4) { // CUSTOMER ACCOUNT option(s)
 			System.out.println(
@@ -90,7 +93,7 @@ public class Menu { //[A]
 					+ "\n\t[u]pdate"
 					+ "\n\t[r]emove"
 					+ "\n\n\t[v]iew"
-			);
+					);
 		}
 		else if(version == 6) { 
 			System.out.println(
@@ -98,19 +101,19 @@ public class Menu { //[A]
 					+  "\n\t[v]iew"
 					+ "\n\t[c]reate"
 					+ "\n\t[u]pdate"		  
-					+ "\n\n\t[d]elete"
-					
-			);
+					+ "\n\n\t[d]elete"	
+					);
 		}
 		else if(version == 10) { // TRY AGAIN options(s)
-			System.out.println("\n\t[y]es");
-			System.out.println("\t[n]o");
+			System.out.println(
+					  "\n\t[y]es"
+					+ "\t[n]o" 
+					);
 		}
 	
 		System.out.println("\n\t[q]uit");
 		System.out.println(drawLine);
 	}
-	
 	
 	public static void tryAgainMenu(int userType) { //[C]
 		
@@ -146,27 +149,27 @@ public class Menu { //[A]
 		}
 	}
 	
-	
-	public static void viewMenu() {
-	
+	 /* FOR DEBUGGING */
+	public static void viewMenu() { 
 		int size = IO.registerList.size();
-		
 		System.out.println(" List of Registered Customers\n");
 		
 		for(int i = 0; i<size; i++) {
-			System.out.println(" " + IO.registerList.get(i) + 
-					           "\t\t" + IO.accountList.get(i));
-		}
-		
+			System.out.println(" " + IO.registerList.get(i) + "\t\t" + IO.accountList.get(i));
+			}
 		System.out.println("\n Total Registered Customers: " + size + "\n");
+	}
+	
+	/* DEBUG */
+	public static void debugMenu(){
+		
+		// CUSTOMER EXCEPTION HERE
+//		try {
+//			System.out.println("\n Custom Exception");
+//		} catch (CustomException m) {
+//			m.printStackTrace();
+//		}
 		
 	}
-	/* DEBUG */
-	
-	public static void debugMenu(){
-				
-	}
-	
-
 
 }

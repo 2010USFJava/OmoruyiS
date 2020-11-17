@@ -7,7 +7,6 @@ import com.revature.beans.Register;
 import com.revature.dao.RegisterDao;
 import com.revature.daoimpl.RegisterDaoImpl;
 import com.revature.io.IO;
-import com.revature.io.InitializeData;
 import com.revature.menu.CustomerMenu;
 import com.revature.msg.Msg;
 
@@ -80,7 +79,7 @@ public class Update {
 			e.printStackTrace();
 		}
 		
-		InitializeData.writeToDatabase();
+		//InitializeData.writeToDatabase();
 		
 		
 		System.out.print("\n Personal info Updated\n");

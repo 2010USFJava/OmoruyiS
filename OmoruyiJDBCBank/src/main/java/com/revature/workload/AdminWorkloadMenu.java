@@ -4,18 +4,18 @@ package com.revature.workload;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import com.revature.msg.Msg;
 import com.revature.beans.Account;
 import com.revature.beans.Register;
-import com.revature.dao.RegisterDao;
-import com.revature.daoimpl.RegisterDaoImpl;
 import com.revature.dao.AccountDao;
+import com.revature.dao.RegisterDao;
 import com.revature.daoimpl.AccountDaoImpl;
+import com.revature.daoimpl.RegisterDaoImpl;
 import com.revature.io.DatabaseProcessing;
 import com.revature.io.IO;
 import com.revature.io.InitializeData;
 import com.revature.io.Logging;
 import com.revature.menu.Menu;
+import com.revature.msg.Msg;
 
 public class AdminWorkloadMenu {
 	
@@ -24,6 +24,7 @@ public class AdminWorkloadMenu {
 	public static AccountDao adi = new AccountDaoImpl();
 	
 	public static void adminWorkLoadMenu() {
+
 		
 		Menu.templateMenu("ADMIN 'WORKLOAD' MENU", 6);
 		
@@ -85,19 +86,21 @@ public class AdminWorkloadMenu {
 				}
 			}
 			Register r1 = new Register(user, pass, first, last);
-			createCustomerAndAccount(r1, size+1);
-
+			createCustomerAndAccount(r1);
+			
+			Account accountCustomer = new Account(size+1000+1, 0.00, 1, 0.00, 0.00);
+			DatabaseProcessing.dbAccountinsert(accountCustomer, r1);
+			Logging.LogIt("info", r1 + " was created");
+			Logging.LogIt("info", accountCustomer + " was created");
+			
 			navmenu(); // back, previous, exit		 
 	}
 	
-	public static void createCustomerAndAccount(Register person, int aid) {
-		Account accountCustomer = new Account(aid, 0.00, 1, 0.00, 0.00);
+	public static void createCustomerAndAccount(Register person) {
+		
 		
 		DatabaseProcessing.dbRegisterinsert(person);
-		DatabaseProcessing.dbAccountinsert(accountCustomer, person);
-		Logging.LogIt("info", person + " was created");
-		Logging.LogIt("info", accountCustomer + " was created");
-		
+	
 	}
 	
 	public static void deleteCustomerList() {
@@ -123,14 +126,14 @@ public class AdminWorkloadMenu {
 	
 	public static void deleteCustomer(Register person, Account aPerson, int i) {
 		String user = person.getUsername();
-		IO.registerList.remove(i);
-		IO.accountList.remove(i);
+		IO.registerList.remove(person);
+		IO.accountList.remove(aPerson);
 		Logging.LogIt("info", user + " was removed");
-		Logging.LogIt("info", IO.accountList.get(i).getAid() + " was removed");
+		Logging.LogIt("info", aPerson.getAid() + " was removed");
 		
 		try {
 			rdi.deleteUser(person);
-			adi.deleteAccount(aPerson, IO.registerList.get(i));
+			adi.deleteAccount(aPerson, person);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -167,6 +170,7 @@ public class AdminWorkloadMenu {
 	
 	public static void viewCustomerList() { /* VIEW */
 
+		
 		int size = IO.registerList.size();
 		System.out.println("\n Total Registered Customers: " + size + "\n");
 		System.out.println(" List of Registered Customers\n");
@@ -177,12 +181,11 @@ public class AdminWorkloadMenu {
 		}
 		
 		/* [6] PL/SQL with at least one user defined function*/
-		try {
-			System.out.println("\n Equity: " + adi.retrievedAssets());
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			System.out.println("\n Equity: " + adi.retrievedAssets());
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 		navmenu();
 	}
 		

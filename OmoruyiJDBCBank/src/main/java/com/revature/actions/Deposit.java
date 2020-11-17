@@ -20,16 +20,19 @@ public class Deposit {
 		int aid = IO.accountList.get(customerTag).getAid();
 		String user = IO.registerList.get(customerTag).getUsername();
 		int qty = IO.accountList.get(customerTag).getQty();
+		//double withdrawal = IO.accountList.get(customerTag).getWithdrawal();
+		double balance = IO.accountList.get(customerTag).getBalance();
 		
 		String starLine = "********************************";
 		System.out.println(starLine);
 		System.out.println("\t " + user + ", Deposit: ");
 		System.out.println(starLine);
-				
+		
+
+		
 		System.out.print("\n How much will you be depositing? ");
 		double deposit = scan.nextDouble();	
-	
-		double balance = IO.accountList.get(customerTag).getBalance();	
+		
 		balance = balance + deposit;
 		
 		Account customer = new Account(aid, balance, qty, deposit);
@@ -43,7 +46,6 @@ public class Deposit {
 			adi.insertAccountBalance(customer, IO.registerList.get(customerTag));
 			adi.insertAccountDeposit(customer, IO.registerList.get(customerTag));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//DatabaseProcessing.dbAccountinsert(customer); //db

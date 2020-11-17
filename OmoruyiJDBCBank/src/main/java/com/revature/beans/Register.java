@@ -25,7 +25,6 @@ public class Register implements Serializable{
 		IOWithCollections.writeInfoFile(IO.registerList, IO.accountList);
 	}
 	
-
 	public Register(String username, String password, String first, String last) { // for customer registration
 		super();
 		//this.uid = uid;
@@ -37,7 +36,6 @@ public class Register implements Serializable{
 		IOWithCollections.writeInfoFile(IO.registerList, IO.accountList);
 		Logging.LogIt("info", "Customer, "+ this.username + ", has registered");
 	}
-
 
 	public String getUsername() {
 		return username;

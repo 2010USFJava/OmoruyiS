@@ -49,7 +49,7 @@ public class Withdrawal {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					InitializeData.writeToDatabase();
+					//InitializeData.writeToDatabase();
 				}
 				else
 					System.out.println("\n insufficient funds");

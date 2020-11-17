@@ -123,11 +123,10 @@ public class CustomerMenu {
 				Menu.tryAgainMenu(1);  //(Note: 1 = register ; 2 = login)
 			}
 		}
-		Register registeringCustomer = new Register(user, pass, first, last);  
-		
-		int aid = size+10000+1;			
+		Register registeringCustomer = new Register(user, pass, first, last);  			
 		DatabaseProcessing.dbRegisterinsert(registeringCustomer);
 		
+		int aid = size+10000+1;
 		Account accountCustomer = new Account(aid, 0.00, 1, 0.00, 0.00);
 		DatabaseProcessing.dbAccountinsert(accountCustomer, registeringCustomer);
 		

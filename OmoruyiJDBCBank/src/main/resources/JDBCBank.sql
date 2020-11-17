@@ -53,25 +53,14 @@ select * from assets; --view aggregation table
 --drop table register;
 --drop table account;
 
-insert into assets (bid) values(2);
+insert into assets (bid) values(1);
 
 update assets
 set bank='casino_royal'
-where bid=2;
-
-update assets
-set equity=sum(balance) from account
-where bid=2;
+where bid=1;
 
 
-
-
-
-
---update assets 
---set equity=(select sum(balance) from account) 
---where bank='casino_royal';
-
+--select sum(balance) from account) 
 
 /*
  * TEST & DEBUGGING COMMANDS
@@ -98,10 +87,6 @@ where bid=2;
 --delete from register 
 --where uid =3;
 
-
---update assets 
---set equity=(select sum(balance) from account) 
---where bank='casino_royal';
 
 
 
